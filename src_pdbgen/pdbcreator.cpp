@@ -54,7 +54,7 @@ bool PdbCreator::Initialize()
     // Add an Info stream.
     auto& InfoBuilder = _pdbBuilder.getInfoBuilder();
     InfoBuilder.setVersion(llvm::pdb::PdbRaw_ImplVer::PdbImplVC70);
-    InfoBuilder.setHashPDBContentsToGUID(false);
+    InfoBuilder.setHashPDBContentsToGUID(true);
     InfoBuilder.setAge(_pefile.GetPdbAge());
 
     auto guid_d = _pefile.GetPdbGuid();

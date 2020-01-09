@@ -44,13 +44,14 @@ void processInput(const char* filepath) {
     creator.Initialize();
 
     creator.ImportIDA(ida_db);
-
-	auto pathPdb = pathExe.parent_path() / "output"  / pefile.GetPdbFilename() / (guidToHex(pefile.GetPdbGuid()) + std::to_string(pefile.GetPdbAge())) / pefile.GetPdbFilename();
+    auto pathPdb = pathExe;
+    pathPdb.replace_extension(".pdb");
+	// auto pathPdb = pathExe.parent_path() / "output"  / pefile.GetPdbFilename() / (guidToHex(pefile.GetPdbGuid()) + std::to_string(pefile.GetPdbAge())) / pefile.GetPdbFilename();
     creator.Commit(pathPdb);
 
-	auto pathExeOut = pathExe.parent_path() / "output" / pathExe.filename() / (intToHex(pefile.GetTimestamp())+intToHex(pefile.GetImageSize())) / pathExe.filename();
-	std::filesystem::create_directories(pathExeOut.parent_path());
-	std::filesystem::copy_file(pathExe, pathExeOut, std::filesystem::copy_options::overwrite_existing);
+	// auto pathExeOut = pathExe.parent_path() / "output" / pathExe.filename() / (intToHex(pefile.GetTimestamp())+intToHex(pefile.GetImageSize())) / pathExe.filename();
+	// std::filesystem::create_directories(pathExeOut.parent_path());
+	// std::filesystem::copy_file(pathExe, pathExeOut, std::filesystem::copy_options::overwrite_existing);
 }
 
 int main(int argc, char* argv[]) {
