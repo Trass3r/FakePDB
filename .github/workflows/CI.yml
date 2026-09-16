@@ -1,4 +1,5 @@
 on:
+  workflow_dispatch:
   push:
     branches: [ "master" ]
   pull_request:
@@ -9,12 +10,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
+    - uses: Trass3r/setup-cpp@master
     - name: Build
       run: ./build.ps1
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: binaries
         path: ~build/deploy/*.zip
+        archive: false
+
+    - uses: actions/upload-artifact@v7
+      with:
+        name: llvm
+        path: ~build/llvm_install/*

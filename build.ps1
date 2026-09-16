@@ -74,9 +74,9 @@ function Get-Architecture()
 function Set-BuildEnvironment(){
     if("windows" -eq $(Get-OS)){
         #https://stackoverflow.com/a/64744522
-        $location = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools"
+        $location = "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools"
         if (!(Test-Path -Path $location)) {
-            $location = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools"
+            $location = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\Tools"
         }
         if (!(Test-Path -Path $location)) {
             Write-Error "MSVC was not found"
