@@ -64,7 +64,7 @@ namespace FakePDB::PDB {
         // Add an Info stream.
         auto& InfoBuilder = _pdbBuilder.getInfoBuilder();
         InfoBuilder.setVersion(llvm::pdb::PdbRaw_ImplVer::PdbImplVC70);
-        InfoBuilder.setHashPDBContentsToGUID(true);
+        InfoBuilder.setHashPDBContentsToGUID(false);
 
         // set GUID and Aage
         if (std::filesystem::exists(path_exe)) {
